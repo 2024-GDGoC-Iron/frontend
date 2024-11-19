@@ -1,20 +1,23 @@
-// src/components/chat/ChatInput.jsx
+import React from 'react';
 import { Send } from 'lucide-react';
 
-export const ChatInput = ({ onSend }) => {
+export const ChatInput = ({ value, onChange, onSubmit }) => {
   return (
-    <div className="relative">
-      <input 
+    <form onSubmit={onSubmit} className="relative">
+      <input
         type="text"
+        value={value}
+        onChange={onChange}
         placeholder="구체적으로 물어보세요?"
-        className="w-full bg-gray-100 rounded-full py-3 px-6 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-6 py-4 bg-[#F8F9FB] rounded-full outline-none"
       />
       <button 
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 flex items-center justify-center"
-        onClick={onSend}
+        type="submit"
+        className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+        disabled={!value.trim()}
       >
-        <Send className="w-5 h-5 text-gray-500" />
+        <Send size={18} />
       </button>
-    </div>
+    </form>
   );
 };

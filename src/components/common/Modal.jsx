@@ -1,4 +1,3 @@
-// src/components/common/Modal.jsx
 import React from 'react';
 
 export const Modal = ({ isOpen, onClose, children }) => {

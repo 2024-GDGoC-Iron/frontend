@@ -32,7 +32,7 @@ export const Header = () => {
            </Link>
          ))}
          <Button className="rounded-full bg-[#5B7BA3] hover:bg-[#4A6A92] text-white px-6">
-           로그인
+           프로필
          </Button>
        </div>
      </nav>

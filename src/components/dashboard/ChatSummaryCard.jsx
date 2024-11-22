@@ -7,7 +7,7 @@ export const ChatSummaryCard = ({ chat, onClick }) => {
       <div className="p-6">
         <div className="flex items-start gap-4 mb-4">
           <img 
-            src={chat.professorImage || "/api/placeholder/40/40"} 
+            src="/api/placeholder/40/40"
             alt={chat.professorName}
             className="w-12 h-12 rounded-full"
           />
@@ -18,7 +18,7 @@ export const ChatSummaryCard = ({ chat, onClick }) => {
           <span className="text-sm text-gray-500 ml-auto">{chat.date}</span>
         </div>
         
-        <p className="text-gray-600 text-sm line-clamp-2">
+        <p className="text-gray-600 text-sm whitespace-pre-line line-clamp-3">
           {chat.summary}
         </p>
       </div>

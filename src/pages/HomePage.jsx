@@ -93,7 +93,7 @@ export default function HomePage() {
                 <ul className="space-y-2">
                   {section.items.map((item, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#19A7CE]"></div>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -116,7 +116,7 @@ export default function HomePage() {
               { number: "04", title: "결과 확인", desc: "매칭 결과 및 상세 정보 제공" }
             ].map((step, index) => (
               <div key={index} className="relative p-6">
-                <div className="text-4xl font-bold text-[#4B9FD6] mb-4">{step.number}</div>
+                <div className="text-4xl font-bold text-[#19A7CE] mb-4">{step.number}</div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
                 <p className="text-gray-600">{step.desc}</p>
                 {index < 3 && (

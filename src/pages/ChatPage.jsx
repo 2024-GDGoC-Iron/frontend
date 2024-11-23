@@ -170,49 +170,35 @@ const ChatPage = () => {
   };
 
   const formatAnalysisResult = (result) => {
-    if (!result?.analysis) return null;
+    if (!result) return null;
   
-    // DynamoDB AttributeValue 형식을 일반 객체로 변환하는 함수
-    const convertDDBItem = (item) => {
-      if (!item) return null;
-      if (item.S) return item.S;
-      if (item.N) return Number(item.N);
-      if (item.L) return item.L.map(convertDDBItem);
-      if (item.M) {
-        const obj = {};
-        Object.entries(item.M).forEach(([key, value]) => {
-          obj[key] = convertDDBItem(value);
-        });
-        return obj;
+    // 객체를 문자열로 변환하는 헬퍼 함수
+    const formatValue = (value) => {
+      if (value === undefined || value === null) return '정보 없음';
+      if (typeof value === 'object') {
+        if (Array.isArray(value)) {
+          return value.join(', ') || '정보 없음';
+        }
+        return Object.values(value).filter(Boolean).join(', ') || '정보 없음';
       }
-      return item;
+      return String(value);
     };
   
-    const analysis = convertDDBItem(result.analysis);
-    const matchData = convertDDBItem(result.match)?.match || {};
+    const analysis = result.analysis || {};
   
     return {
       summary: {
         professorName: "상담 분석 결과",
-        department: analysis.학업상황?.전공 || "전공 정보 없음",
+        department: "전공 정보",
         date: new Date().toLocaleDateString(),
-        summary: [
-          `[학업상황] ${analysis.학업상황?.학교}, ${analysis.학업상황?.전공}, ${analysis.학업상황?.학년}, ${analysis.학업상황?.학점}`,
-          `[희망진로] ${analysis.희망진로?.목표직무}, ${analysis.희망진로?.관심분야}`,
-          `[보유역량] ${[
-            analysis.보유역량?.자격증?.join(', '),
-            analysis.보유역량?.어학능력?.join(', '),
-            analysis.보유역량?.프로젝트?.join(', ')
-          ].filter(Boolean).join(' / ')}`,
-          `[주요고민] ${analysis.주요고민사항?.join(', ')}`
-        ].join('\n')
+        data: {
+          학업상황: formatValue(analysis.학업상황),
+          희망진로: formatValue(analysis.희망진로),
+          보유역량: formatValue(analysis.보유역량),
+          주요고민: formatValue(analysis.주요고민) 
+        }
       },
-      professor: matchData.matchedProfessor && {
-        ...convertDDBItem(matchData.matchedProfessor),
-        matchReason: convertDDBItem(matchData.matchReason),
-        recommendedActions: convertDDBItem(matchData.recommendedActions),
-        developmentAreas: convertDDBItem(matchData.developmentAreas)
-      }
+      professor: result.match?.match?.matchedProfessor
     };
   };
 

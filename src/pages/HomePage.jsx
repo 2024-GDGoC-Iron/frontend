@@ -1,31 +1,34 @@
 import React from 'react';
+import bgImg from '../assets/test.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#F8F9FB]">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16" style={{ marginTop: '10%' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="bg-[#F8F9FB] rounded-[32px] aspect-square overflow-hidden">
-            <div className="flex items-center justify-center h-full">
-              <img 
-                src="/api/placeholder/800/800"
-                alt="Hero" 
-                className="w-3/4 h-3/4 object-contain"
-              />
-            </div>
+          <div className="bg-[#F8F9FB] rounded-[32px] w-[535px] h-[395px] overflow-hidden flex justify-center items-center">
+            <img
+              src={bgImg}
+              alt="Hero"
+              className="w-full h-full object-cover rounded-[32px]"
+            />
           </div>
           <div className="space-y-6">
             <div className="space-y-2">
-              <h1 className="text-[40px] font-bold">오늘 대학원 시작은</h1>
-              <div className="text-[#4B9FD6] text-[40px] font-bold">IN!PICK</div>
+              <h1 className="text-[75px] font-bold font-gmarket text-right">요즘 대학원 시작은</h1>
+              <div className="text-[#19A7CE] text-[75px] font-bold font-gmarket text-right">IN!PICK</div>
             </div>
-            <p className="text-gray-600 text-lg">매칭도, 컨택도 인픽과 함께</p>
-            <button 
-              className="rounded-full h-12 px-6 bg-[#5B7BA3] hover:bg-[#4A6A92] text-white text-lg"
-              onClick={() => console.log('Chat started')}
-            >
-              AI와 채팅하기
-            </button>
+            <p className="text-[25px] text-[#666666] font-medium text-lg text-right">매칭도, 컨택도 인픽과 함께</p>
+            <div className="text-right">
+              <button
+                className="rounded-full h-12 px-6 bg-[#4682A9] hover:bg-[#386887] text-white text-lg"
+                onClick={() => navigate('/chat')}
+              >
+                AI와 채팅하기
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -130,12 +133,12 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center space-y-8">
           <h2 className="text-3xl font-bold">지금 바로 시작하세요</h2>
           <p className="text-xl text-gray-600">AI 기반 맞춤형 교수 매칭</p>
-          <button 
-              className="rounded-full h-12 px-6 bg-[#5B7BA3] hover:bg-[#4A6A92] text-white text-lg"
-              onClick={() => console.log('Chat started')}
-            >
-              시작하기
-            </button>
+          <button
+            className="rounded-full h-12 px-6 bg-[#4682A9] hover:bg-[#386887] text-white text-lg"
+            onClick={() => navigate('/chat')}
+          >
+            시작하기
+          </button>
         </div>
       </section>
     </div>

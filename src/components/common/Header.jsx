@@ -1,6 +1,7 @@
 // src/components/common/Header.jsx
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../ui/button';
+import logoImg from '../../assets/logo.png';
 
 export const Header = () => {
   const location = useLocation();
@@ -15,8 +16,7 @@ export const Header = () => {
     <header className="bg-white py-4 px-6 border-b">
       <nav className="container mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img src="/images/inpick-logo.svg" alt="" className="h-8" />
-          <h1>IN!PICK</h1>
+          <img src={logoImg} alt="IN!PICK" className="h-10" />
         </Link>
         <div className="flex items-center gap-8">
           {navItems.map(({ path, label }) => (

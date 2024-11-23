@@ -6,7 +6,7 @@ export const ChatInput = ({ value, onChange, onSubmit, disabled }) => {
         type="text"
         value={value}
         onChange={onChange}
-        placeholder="구체적으로 물어보세요?"
+        placeholder="무엇을 물어볼까요?"
         className="w-full px-6 py-4 bg-[#F8F9FB] rounded-full outline-none"
         disabled={disabled}
       />

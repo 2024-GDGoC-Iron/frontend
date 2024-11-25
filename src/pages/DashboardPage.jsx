@@ -51,33 +51,85 @@ const DashboardPage = () => {
   };
 
   const ChatCard = ({ chat }) => {
-    const getTimestamp = (chat) => {
-      return chat.timestamp || new Date().toISOString();
+    // 데이터가 없는 경우를 위한 안전한 접근
+    const getNestedValue = (obj, path) => {
+      return path.split('.').reduce((acc, curr) => {
+        return acc?.[curr] ?? '';
+      }, obj);
     };
-
+  
+    // timestamp 처리
+    const formattedDate = chat?.timestamp 
+      ? new Date(chat.timestamp).toLocaleDateString()
+      : new Date().toLocaleDateString();
+  
     return (
       <div 
         onClick={() => handleChatClick(chat)}
-        className="bg-white rounded-2xl border border-gray-100 hover:border-blue-200 
-                   hover:shadow-lg transition-all duration-200 cursor-pointer group"
+        className="bg-white rounded-2xl p-6 hover:scale-[1.02] transform 
+                   transition-all duration-300 cursor-pointer
+                   border border-gray-100 hover:border-blue-200
+                   hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
       >
-        <div className="p-6">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center
-                          group-hover:bg-blue-100 transition-colors duration-200">
-              <MessageCircle className="w-6 h-6 text-blue-500" />
+        {/* 상단 헤더 영역 */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 
+                           flex items-center justify-center shadow-sm">
+              <MessageCircle className="w-5 h-5 text-white" />
             </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-lg text-gray-900 group-hover:text-blue-600 
-                            transition-colors duration-200">
-                진로 상담
-              </h3>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Calendar className="w-4 h-4" />
-                {new Date(getTimestamp(chat)).toLocaleDateString()}
-              </div>
+            <div>
+              <h3 className="font-semibold text-gray-900">진로 상담</h3>
+              <p className="text-sm text-gray-500 mt-0.5">
+                {formattedDate}
+              </p>
             </div>
           </div>
+          <span className="px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full">
+            완료
+          </span>
+        </div>
+  
+        {/* 상담 내용 요약 */}
+        <div className="space-y-3 mt-4">
+          {getNestedValue(chat, 'analysis.careerGoals.pathType') && (
+            <div className="flex items-center gap-2 text-gray-600 text-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+              <span>
+                {String(getNestedValue(chat, 'analysis.careerGoals.pathType'))}
+              </span>
+            </div>
+          )}
+          {getNestedValue(chat, 'analysis.careerGoals.targetField') && (
+            <div className="flex items-center gap-2 text-gray-600 text-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400"></div>
+              <span>
+                {String(getNestedValue(chat, 'analysis.careerGoals.targetField'))}
+              </span>
+            </div>
+          )}
+          {getNestedValue(chat, 'analysis.consultingNeeds.mainPurpose') && (
+            <div className="flex items-center gap-2 text-gray-600 text-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+              <span>
+                {String(getNestedValue(chat, 'analysis.consultingNeeds.mainPurpose'))}
+              </span>
+            </div>
+          )}
+        </div>
+  
+        {/* 하단 액션 영역 */}
+        <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-500">
+              {`${getNestedValue(chat, 'analysis.studentProfile.year') || ''} 
+                ${getNestedValue(chat, 'analysis.studentProfile.major') || ''}`.trim() || '상담 정보'}
+            </span>
+          </div>
+          <button className="text-blue-500 text-sm font-medium hover:text-blue-600">
+            자세히 보기 →
+          </button>
         </div>
       </div>
     );

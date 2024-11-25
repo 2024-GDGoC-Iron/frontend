@@ -1,5 +1,5 @@
 import React from 'react';
-import bgImg from '../assets/test.jpeg';
+import bgImg from '../assets/service.png';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';

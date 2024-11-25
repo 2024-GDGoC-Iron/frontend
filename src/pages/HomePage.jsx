@@ -30,7 +30,7 @@ export default function HomePage() {
               src={landingIcon}
               alt="landing"
               className="w-auto h-full object-cover rounded-3xl transform 
-                         hover:scale-105 transition-transform duration-700 z-[9999] overflow-visible"
+                         hover:scale-105 transition-transform duration-700 overflow-visible"
             />
           </motion.div>
 

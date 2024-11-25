@@ -1,5 +1,5 @@
 import React from 'react';
-import bgImg from '../assets/service.png';
+import landingIcon from '../assets/landingIcon.png';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -19,23 +19,22 @@ export default function HomePage() {
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16" style={{ marginTop: '5%' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            className="bg-[#F8F9FB] rounded-3xl w-[535px] h-[395px] overflow-hidden 
-                       flex justify-center items-center shadow-lg hover:shadow-xl 
-                       transition-shadow duration-300"
+          <motion.div
+            className="rounded-3xl w-[535px] h-[395px] overflow-hidden 
+                       flex justify-center items-center duration-300"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             <img
-              src={bgImg}
-              alt="Hero"
-              className="w-full h-full object-cover rounded-3xl transform 
+              src={landingIcon}
+              alt="landing"
+              className="w-auto h-full object-cover rounded-3xl transform 
                          hover:scale-105 transition-transform duration-700"
             />
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -50,7 +49,7 @@ export default function HomePage() {
                            bg-clip-text text-transparent">
                 요즘 대학원 시작은
               </h1>
-              <motion.div 
+              <motion.div
                 className="flex justify-end"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -80,7 +79,7 @@ export default function HomePage() {
 
       {/* Service Features */}
       <section className="py-16 bg-white">
-        <motion.div 
+        <motion.div
           className="container mx-auto px-4"
           initial="initial"
           whileInView="animate"
@@ -133,7 +132,7 @@ export default function HomePage() {
 
       {/* Architecture Section */}
       <section className="py-16">
-        <motion.div 
+        <motion.div
           className="container mx-auto px-4"
           initial="initial"
           whileInView="animate"
@@ -192,7 +191,7 @@ export default function HomePage() {
 
       {/* Process Section */}
       <section className="py-16 bg-white">
-        <motion.div 
+        <motion.div
           className="container mx-auto px-4"
           initial="initial"
           whileInView="animate"
@@ -236,7 +235,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-[#4682A9] to-[#19A7CE]">
-        <motion.div 
+        <motion.div
           className="container mx-auto px-4 text-center space-y-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

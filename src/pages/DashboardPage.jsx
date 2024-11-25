@@ -18,12 +18,26 @@ const DashboardPage = () => {
     const fetchChatHistory = async () => {
       setLoading(true);
       try {
-        const response = await fetch('https://c4lnp44051.execute-api.ap-northeast-1.amazonaws.com/chat-results');
-        if (!response.ok) throw new Error('Failed to fetch chat history');
+        // ChatPage와 동일한 방식으로 요청
+        const response = await fetch('https://c4lnp44051.execute-api.ap-northeast-1.amazonaws.com/chat-results', {
+          method: 'GET',  // GET 메서드 사용
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+    
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Failed to fetch: ${response.status} ${errorText}`);
+        }
+    
         const data = await response.json();
-        setChatHistory(data);
+        console.log('Success fetching chat history:', data);
+        setChatHistory(Array.isArray(data) ? data : []);
+    
       } catch (error) {
         console.error('Error fetching chat history:', error);
+        setChatHistory([]);
       } finally {
         setLoading(false);
       }

@@ -50,7 +50,7 @@ export const ProfessorMatchCard = ({ professor, onSelect, onShowDetail }) => {
               <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full 
                              text-sm font-medium shadow-sm hover:shadow-md 
                              transition-all duration-200">
-                매칭률 {professor.matchScore}%
+                적합도 {professor.matchScore}%
               </span>
             </div>
             

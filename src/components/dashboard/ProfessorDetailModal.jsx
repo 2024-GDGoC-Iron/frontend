@@ -59,7 +59,7 @@ export const ProfessorDetailModal = ({ professor, isOpen, onClose }) => {
                 <h2 className="text-2xl font-bold text-gray-900">{professor.name} 교수</h2>
                 {professor.matchScore && (
                   <Badge variant="blue" className="animate-pulse">
-                    매칭률 {professor.matchScore}%
+                    적합률 {professor.matchScore}%
                   </Badge>
                 )}
               </div>

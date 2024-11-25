@@ -15,7 +15,7 @@ export const Footer = () => {
           
           <div className="flex items-center space-x-6">
             <a
-              href="https://github.com/your-repo"
+              href="https://github.com/2024-GDGoC-Iron"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-[#4682A9] transition-colors"

@@ -1,13 +1,15 @@
+import icon from "../../assets/confirmIcon.png"
+
 export const ChatSummaryCard = ({ chat }) => {
   if (!chat) return null;
- 
+
   const formatDisplay = (value) => {
     if (!value || value === 'undefined' || value === 'null') {
       return <span className="text-gray-400 italic">정보 없음</span>;
     }
     return value;
   };
- 
+
   const formatKey = (key) => key.replace(']', '').trim();
 
   const summaryFields = [
@@ -18,7 +20,7 @@ export const ChatSummaryCard = ({ chat }) => {
     { key: '상담 목적', icon: '💡' },
     { key: '주요 고민', icon: '❓' }
   ];
- 
+
   return (
     <div className="bg-white rounded-2xl border border-gray-100 hover:border-blue-100 
                     hover:shadow-lg transition-all duration-200">
@@ -27,7 +29,9 @@ export const ChatSummaryCard = ({ chat }) => {
         <div className="flex items-start gap-4 mb-6">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 
                         flex items-center justify-center shadow-sm">
-            <span className="text-white text-xl font-semibold">AI</span>
+            <span className="text-white text-xl font-semibold">
+              <img src={icon} />
+            </span>
           </div>
           <div>
             <h3 className="font-bold text-lg mb-1 text-gray-900">
@@ -36,7 +40,7 @@ export const ChatSummaryCard = ({ chat }) => {
             <p className="text-gray-500 text-sm">{chat.date}</p>
           </div>
         </div>
-        
+
         {/* 내용 영역 */}
         <div className="space-y-4">
           {summaryFields.map(({ key, icon }) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/ai.jpg';
+import logo from '../../assets/dashboardIcon.png';
 import { motion } from 'framer-motion';
 
 export const ChatMessage = ({ message, isUser }) => {

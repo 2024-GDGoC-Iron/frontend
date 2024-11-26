@@ -6,7 +6,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-[#4682A9] font-medium">
-              INIPICK
+              IN!PICK
               <span className="text-gray-500 ml-2">
                 @ GDG on Campus Inha University
               </span>
